@@ -9,7 +9,8 @@ A management system for driving schools. It covers students and enrolment, lesso
 - Built the application together with its test suites: end-to-end flows in Playwright, plus unit and integration checks in Vitest.
 - Turned business rules into reproducible tests: scheduling conflicts, exam eligibility, instalment maths, data imports.
 - Ran the end-to-end suite on a desktop profile and on four mobile profiles (current and older Android and iOS devices).
-- Reported UI defects with evidence, expected behaviour and severity, and fixed them in the same codebase.
+- Wrote 50+ SQL scripts that check data integrity, constraints, triggers and migration results, and tested Row Level Security policies for tenant isolation.
+- Reported 13+ UI defects with evidence, expected behaviour and severity, and fixed them in the same codebase.
 
 ## Test strategy
 
@@ -30,7 +31,7 @@ A management system for driving schools. It covers students and enrolment, lesso
 Test titles are kept in their original language (English or Portuguese). Client and product names are anonymized.
 
 <!-- catalog:erp:start -->
-**429 test cases** · 73 end-to-end · 356 unit & integration
+**428 test cases** · 72 end-to-end · 356 unit & integration
 
 #### End-to-end
 
@@ -49,66 +50,65 @@ Test titles are kept in their original language (English or Portuguese). Client 
 | ERP-E2E-011 | Authentication & RBAC Basics | should show error for invalid credentials |
 | ERP-E2E-012 | Authentication & RBAC Basics | should logout successfully |
 | ERP-E2E-013 | Curriculum & Attendance Flow | should verify linear progression and enrollment |
-| ERP-E2E-014 | debug | debug elearning |
-| ERP-E2E-015 | ERP - Enrollment and Agenda Flow (UUID Migration Verification) | should enroll a new student and schedule an appointment successfully |
-| ERP-E2E-016 | Financial Management (Financeiro) | should display financial page with correct title |
-| ERP-E2E-017 | Financial Management (Financeiro) | should display all 4 KPI stat cards |
-| ERP-E2E-018 | Financial Management (Financeiro) | should display monthly evolution chart |
-| ERP-E2E-019 | Financial Management (Financeiro) | should display cash flow forecast chart |
-| ERP-E2E-020 | Financial Management (Financeiro) | should display transaction table with correct headers |
-| ERP-E2E-021 | Financial Management (Financeiro) | should display pagination controls |
-| ERP-E2E-022 | Financial Management (Financeiro) | should filter transactions by Entradas (Income) |
-| ERP-E2E-023 | Financial Management (Financeiro) | should filter transactions by Saídas (Expense) |
-| ERP-E2E-024 | Financial Management (Financeiro) | should search transactions by description |
-| ERP-E2E-025 | Financial Management (Financeiro) | should show empty results for non-matching search |
-| ERP-E2E-026 | Financial Management (Financeiro) | should open new transaction modal |
-| ERP-E2E-027 | Financial Management (Financeiro) | should have export CSV button |
-| ERP-E2E-028 | Financial Management (Financeiro) | Gerente should have access to Financeiro |
-| ERP-E2E-029 | Fleet Management (Frota) | should display fleet page with correct title |
-| ERP-E2E-030 | Fleet Management (Frota) | should display vehicle cards in grid |
-| ERP-E2E-031 | Fleet Management (Frota) | should open new vehicle modal |
-| ERP-E2E-032 | Fleet Management (Frota) | should search and filter vehicles by plate |
-| ERP-E2E-033 | Fleet Management (Frota) | should filter vehicles by category |
-| ERP-E2E-034 | Fleet Management (Frota) | should filter vehicles by status |
-| ERP-E2E-035 | Fleet Management (Frota) | should show empty state for non-matching filter |
-| ERP-E2E-036 | Fleet Management (Frota) | should open vehicle detail modal on card click |
-| ERP-E2E-037 | Fleet Management (Frota) | vehicle detail modal should show tabs (Info, Manutenção, Quilometragem) |
-| ERP-E2E-038 | Fleet Management (Frota) | vehicle detail should display mileage and health stats |
-| ERP-E2E-039 | Fleet Management (Frota) | vehicle form should have required fields |
-| ERP-E2E-040 | Instructor Portal Verification | should fetch calendar events when accessing the instructor dashboard directly |
-| ERP-E2E-041 | Fase 3 — Avaliação Anónima do Instrutor | T3.1: Após aula prática attended — botão de avaliação visível |
-| ERP-E2E-042 | Fase 3 — Avaliação Anónima do Instrutor | T3.2: Modal de avaliação abre com 5 estrelas e campo de comentário |
-| ERP-E2E-043 | Fase 3 — Avaliação Anónima do Instrutor | T3.3: Submeter avaliação com 5 estrelas — mensagem de sucesso |
-| ERP-E2E-044 | Fase 3 — Avaliação Anónima do Instrutor | T3.4: Quando não há avaliação pendente — secção de avaliação não aparece |
-| ERP-E2E-045 | Fase 3 — Avaliação Anónima do Instrutor | T3.5: Botão Enviar Avaliação desabilitado sem estrelas seleccionadas |
-| ERP-E2E-046 | Multi-tenant Data Isolation | should cross-verify data isolation between schools |
-| ERP-E2E-047 | login | a equipa entra na app e a primeira página carrega sem erros |
-| ERP-E2E-048 | Navigation & Route Protection | root URL should show Landing Page with portal selection |
-| ERP-E2E-049 | Navigation & Route Protection | unauthenticated access to /#/agenda should show login form |
-| ERP-E2E-050 | Navigation & Route Protection | unauthenticated access to /#/financial should show login form |
-| ERP-E2E-051 | Navigation & Route Protection | /#/login route should show email and password toggle |
-| ERP-E2E-052 | Navigation & Route Protection | Admin can navigate to all main sections via sidebar |
-| ERP-E2E-053 | Navigation & Route Protection | Instrutor cannot see admin links |
-| ERP-E2E-054 | Navigation & Route Protection | direct URL access to /#/financial should be blocked for Instrutor |
-| ERP-E2E-055 | Navigation & Route Protection | login page should display branding |
-| ERP-E2E-056 | Verify New Features | Instructor Portal & Student Practical Tab features |
-| ERP-E2E-057 | Fase 1 — Pré-requisitos Sequenciais | T1.1: M1 sempre disponível (sem pré-requisito) |
-| ERP-E2E-058 | Fase 1 — Pré-requisitos Sequenciais | T1.2: M2 bloqueado quando M1 = not_started |
-| ERP-E2E-059 | Fase 1 — Pré-requisitos Sequenciais | T1.3: M2 bloqueado quando M1 = enrolled (inscrito mas não attended) |
-| ERP-E2E-060 | Fase 1 — Pré-requisitos Sequenciais | T1.4: M2 desbloqueado quando M1 = attended |
-| ERP-E2E-061 | Fase 1 — Pré-requisitos Sequenciais | T1.5: M2 bloqueado quando M1 = missed |
-| ERP-E2E-062 | Role-Based Access Control (RBAC) | Administrador should have Administrative access |
-| ERP-E2E-063 | Role-Based Access Control (RBAC) | Instrutor should NOT have Administrative access |
-| ERP-E2E-064 | Student Card Rendering Tests | should render student card for type: ${cardType} |
-| ERP-E2E-065 | Student Portal Verification (Post-UUID Migration) | should display student portal login page correctly |
-| ERP-E2E-066 | Student Portal Verification (Post-UUID Migration) | should submit NIF and show feedback message |
-| ERP-E2E-067 | Student Portal Verification (Post-UUID Migration) | should show error for invalid NIF |
-| ERP-E2E-068 | ui | add product and payment |
-| ERP-E2E-069 | Fase 2 — Lista de Espera | T2.1: Aula disponível — slots aparecem (sem lista de espera) |
-| ERP-E2E-070 | Fase 2 — Lista de Espera | T2.2: Aula cheia — botão "Entrar na Lista de Espera" aparece no modal |
-| ERP-E2E-071 | Fase 2 — Lista de Espera | T2.3: Aula cheia — entra na lista e vê botão desabilitado após join |
-| ERP-E2E-072 | Fase 2 — Lista de Espera | T2.4: Entrar na lista de espera — mostra mensagem de sucesso com posição |
-| ERP-E2E-073 | Fase 2 — Lista de Espera | T2.5: Após entrar — indicador de posição na fila visível |
+| ERP-E2E-014 | ERP - Enrollment and Agenda Flow (UUID Migration Verification) | should enroll a new student and schedule an appointment successfully |
+| ERP-E2E-015 | Financial Management (Financeiro) | should display financial page with correct title |
+| ERP-E2E-016 | Financial Management (Financeiro) | should display all 4 KPI stat cards |
+| ERP-E2E-017 | Financial Management (Financeiro) | should display monthly evolution chart |
+| ERP-E2E-018 | Financial Management (Financeiro) | should display cash flow forecast chart |
+| ERP-E2E-019 | Financial Management (Financeiro) | should display transaction table with correct headers |
+| ERP-E2E-020 | Financial Management (Financeiro) | should display pagination controls |
+| ERP-E2E-021 | Financial Management (Financeiro) | should filter transactions by Entradas (Income) |
+| ERP-E2E-022 | Financial Management (Financeiro) | should filter transactions by Saídas (Expense) |
+| ERP-E2E-023 | Financial Management (Financeiro) | should search transactions by description |
+| ERP-E2E-024 | Financial Management (Financeiro) | should show empty results for non-matching search |
+| ERP-E2E-025 | Financial Management (Financeiro) | should open new transaction modal |
+| ERP-E2E-026 | Financial Management (Financeiro) | should have export CSV button |
+| ERP-E2E-027 | Financial Management (Financeiro) | Gerente should have access to Financeiro |
+| ERP-E2E-028 | Fleet Management (Frota) | should display fleet page with correct title |
+| ERP-E2E-029 | Fleet Management (Frota) | should display vehicle cards in grid |
+| ERP-E2E-030 | Fleet Management (Frota) | should open new vehicle modal |
+| ERP-E2E-031 | Fleet Management (Frota) | should search and filter vehicles by plate |
+| ERP-E2E-032 | Fleet Management (Frota) | should filter vehicles by category |
+| ERP-E2E-033 | Fleet Management (Frota) | should filter vehicles by status |
+| ERP-E2E-034 | Fleet Management (Frota) | should show empty state for non-matching filter |
+| ERP-E2E-035 | Fleet Management (Frota) | should open vehicle detail modal on card click |
+| ERP-E2E-036 | Fleet Management (Frota) | vehicle detail modal should show tabs (Info, Manutenção, Quilometragem) |
+| ERP-E2E-037 | Fleet Management (Frota) | vehicle detail should display mileage and health stats |
+| ERP-E2E-038 | Fleet Management (Frota) | vehicle form should have required fields |
+| ERP-E2E-039 | Instructor Portal Verification | should fetch calendar events when accessing the instructor dashboard directly |
+| ERP-E2E-040 | Fase 3 — Avaliação Anónima do Instrutor | T3.1: Após aula prática attended — botão de avaliação visível |
+| ERP-E2E-041 | Fase 3 — Avaliação Anónima do Instrutor | T3.2: Modal de avaliação abre com 5 estrelas e campo de comentário |
+| ERP-E2E-042 | Fase 3 — Avaliação Anónima do Instrutor | T3.3: Submeter avaliação com 5 estrelas — mensagem de sucesso |
+| ERP-E2E-043 | Fase 3 — Avaliação Anónima do Instrutor | T3.4: Quando não há avaliação pendente — secção de avaliação não aparece |
+| ERP-E2E-044 | Fase 3 — Avaliação Anónima do Instrutor | T3.5: Botão Enviar Avaliação desabilitado sem estrelas seleccionadas |
+| ERP-E2E-045 | Multi-tenant Data Isolation | should cross-verify data isolation between schools |
+| ERP-E2E-046 | login | a equipa entra na app e a primeira página carrega sem erros |
+| ERP-E2E-047 | Navigation & Route Protection | root URL should show Landing Page with portal selection |
+| ERP-E2E-048 | Navigation & Route Protection | unauthenticated access to /#/agenda should show login form |
+| ERP-E2E-049 | Navigation & Route Protection | unauthenticated access to /#/financial should show login form |
+| ERP-E2E-050 | Navigation & Route Protection | /#/login route should show email and password toggle |
+| ERP-E2E-051 | Navigation & Route Protection | Admin can navigate to all main sections via sidebar |
+| ERP-E2E-052 | Navigation & Route Protection | Instrutor cannot see admin links |
+| ERP-E2E-053 | Navigation & Route Protection | direct URL access to /#/financial should be blocked for Instrutor |
+| ERP-E2E-054 | Navigation & Route Protection | login page should display branding |
+| ERP-E2E-055 | Verify New Features | Instructor Portal & Student Practical Tab features |
+| ERP-E2E-056 | Fase 1 — Pré-requisitos Sequenciais | T1.1: M1 sempre disponível (sem pré-requisito) |
+| ERP-E2E-057 | Fase 1 — Pré-requisitos Sequenciais | T1.2: M2 bloqueado quando M1 = not_started |
+| ERP-E2E-058 | Fase 1 — Pré-requisitos Sequenciais | T1.3: M2 bloqueado quando M1 = enrolled (inscrito mas não attended) |
+| ERP-E2E-059 | Fase 1 — Pré-requisitos Sequenciais | T1.4: M2 desbloqueado quando M1 = attended |
+| ERP-E2E-060 | Fase 1 — Pré-requisitos Sequenciais | T1.5: M2 bloqueado quando M1 = missed |
+| ERP-E2E-061 | Role-Based Access Control (RBAC) | Administrador should have Administrative access |
+| ERP-E2E-062 | Role-Based Access Control (RBAC) | Instrutor should NOT have Administrative access |
+| ERP-E2E-063 | Student Card Rendering Tests | should render student card for type: ${cardType} |
+| ERP-E2E-064 | Student Portal Verification (Post-UUID Migration) | should display student portal login page correctly |
+| ERP-E2E-065 | Student Portal Verification (Post-UUID Migration) | should submit NIF and show feedback message |
+| ERP-E2E-066 | Student Portal Verification (Post-UUID Migration) | should show error for invalid NIF |
+| ERP-E2E-067 | ui | add product and payment |
+| ERP-E2E-068 | Fase 2 — Lista de Espera | T2.1: Aula disponível — slots aparecem (sem lista de espera) |
+| ERP-E2E-069 | Fase 2 — Lista de Espera | T2.2: Aula cheia — botão "Entrar na Lista de Espera" aparece no modal |
+| ERP-E2E-070 | Fase 2 — Lista de Espera | T2.3: Aula cheia — entra na lista e vê botão desabilitado após join |
+| ERP-E2E-071 | Fase 2 — Lista de Espera | T2.4: Entrar na lista de espera — mostra mensagem de sucesso com posição |
+| ERP-E2E-072 | Fase 2 — Lista de Espera | T2.5: Após entrar — indicador de posição na fila visível |
 
 #### Unit & integration
 
